@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+    <head>
+            <title>FINAL ASSESSMENT</title>
+            <link href="style.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <div class="dashboard">
+            <h1 class="title"></h1>
+
+            <div class="name grid-cell">
+                <section>
+                    <h2>Mikhai Rochelle</h2>
+                    <p>ACS 1700 Assessment</p>
+                </section>
+            </div>
+            <section>
+                <div class="change grid-cell">
+                    <label>Width:</label>
+                    <input id="widthInput" type="number" oninput="update() + changeWidth()">
+                    <label>Height:</label>
+                    <input id="heightInput" type="number" oninput="update() + changeHeight()">
+                    <label>Color:</label>
+                    <input name="MyColorPicker" type="color" id="MyColorPicker" oninput="changeColor() + changeValue()">
+                </div>
+            </section>
+            <section>
+                <div class="change2 grid-cell">
+                    <h2 id="widthInputText">Width</h2>
+                    <p class="output" id="txtOutPut"></p>
+                    <h2 id="heightInputText">Height</h2>
+                    <p class="output" id="txtOutPut2"></p>
+                    <h2 id="colorInputText">Color</h2>
+                    <p class="output" id="colorOutPut"></p>
+                </div>
+            </section>
+            <section>
+                <div class="animate grid-cell">
+                    <h2>Color</h2>
+                    <div id="Myelement"></div>
+                </div>
+            </section>
+            </div>
+    </body>
+</html>
+
+<script>
+const txt1 = document.getElementById('txtOutPut');
+const txt2 = document.getElementById('txtOutPut2');
+const clr = document.getElementById('colorOutPut');
+const width = document.querySelector('#widthInput');
+const width2 = document.getElementById('widthInput')
+const height = document.querySelector("#heightInput");
+const color = document.querySelector("#MyColorPicker");
+
+function update() {
+    txt1.innerHTML = width.value;
+    txt2.innerHTML = height.value;
+}
+txt1.addEventListener('input', update);
+txt2.addEventListener('input', update);
+
+
+function changeColor() {
+   let colors = document.getElementById("MyColorPicker").value;
+   document.getElementById('Myelement').style.backgroundColor = colors;
+}
+
+function changeValue() {
+    clr.innerHTML = color.value;
+}
+clr.addEventListener('input', update);
+
+// const p = document.querySelector("p");
+// const button = document.querySelector("button");
+
+// const p$ = new MutationObserver((mutationList, observer) => {
+//   for (mutation of mutationList) {
+//     console.log(mutation);
+//   }
+// });
+
+// p$.observe(p, {
+//   attributes: true,
+//   childList: false,
+//   subtree: false
+// });
+
+// button.addEventListener("click", () => {
+//   p.style.width = "100px";
+// });
+
+const getElement = document.querySelector("#Myelement");
+const element = document.getElementById('Myelement')
+function changeWidth() {
+    const widthLength = document.getElementById('widthInput')
+    let observer = new MutationObserver(function() {
+   console.log("You changed the style") 
+});
+observer.observe(getElement, { attributeFilter: ['style'] });
+setTimeout(()=>{
+   getElement.style.width = widthLength.value + "px";
+}, 0)
+}
+
+function changeHeight() {
+    const heightLength = document.getElementById('heightInput')
+    let observer = new MutationObserver(function() {
+   console.log("You changed the style")
+});
+observer.observe(getElement, { attributeFilter: ['style'] });
+setTimeout(()=>{
+   getElement.style.height = heightLength.value + "px";
+}, 0)
+}
+
+// const element = document.querySelector("#Myelement");
+// function changeWidth(e) {
+//     getElement = document.getElementById('Myelement');
+//     element.style.width = e.target.value;
+//     element.style.width = width.value;
+//     element.append 
+//     element.innerHTML = width.value
+//     for () {
+
+//     }
+// }
+
+// loop, container, div inside container, selector for div, attach seletor for div (append), append to DOM,  
+// logic - when I enter width, I want this thing to change. width.innerHTML to display changes. 
+
+// const navbarResizeHandler = function (entries) {
+//   for (let entry of entries) {
+//     console.log(entry)
+//     const Myelemet = document.getElementById('Myelement');
+//     e.target.value = width.value;
+//     Myelement.style.width = e.target.value;
+    
+//   }
+// }
+// const navbarResizeObserver = new ResizeObserver(navbarResizeHandler)
+
+// navbarResizeObserver.observe(element)
+</script>
